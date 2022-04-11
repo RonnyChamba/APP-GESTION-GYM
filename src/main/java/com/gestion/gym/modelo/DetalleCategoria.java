@@ -39,12 +39,12 @@ public class DetalleCategoria {
 	 */
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_categoria", insertable = false, updatable = false)
 	private Categoria categoria;
 	
 	
-	@ManyToOne(fetch =  FetchType.EAGER)
+	@ManyToOne(fetch =  FetchType.LAZY)
 	@JoinColumn(name = "id_ejercicio", insertable = false, updatable = false)
 	private Ejercicio ejercicio;
 	

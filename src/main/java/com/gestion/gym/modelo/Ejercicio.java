@@ -23,8 +23,7 @@ public class Ejercicio {
 	private Integer id;
 	private String nombre;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "ejercicio")
-	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "detalleCategoriaPK_2")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "ejercicio")
 	private  List<DetalleCategoria> detallesCategorias;
 	
 	public Ejercicio() {}

@@ -20,9 +20,9 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
+
 	
-	//@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "detalleCategoriaPK_2.categoria.id")
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "categoria")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "categoria")
 	private  List<DetalleCategoria> detallesCategorias;
 	
 	

@@ -7,6 +7,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.gestion.gym.modelo.DetalleCategoria;
 import com.gestion.gym.modelo.Ejercicio;
 import com.gestion.gym.service.EjercicioService;
 
@@ -64,7 +66,7 @@ public class AdminEjercicio {
 	public void listar () {
 		
 	    	
-		List<Ejercicio> ejercicios = ejercicioService.list();
+		List<Ejercicio> ejercicios = ejercicioService.list(true);
 		for (Ejercicio item: ejercicios) {
 						
 			LOGGER.info(item);	
@@ -81,6 +83,23 @@ public class AdminEjercicio {
 		for (Ejercicio item: ejercicios) {
 						
 			LOGGER.info(item);	
+		}	
+	}
+	
+	public void listarAndCategoria() {
+		
+		List<Ejercicio> ejercicios = ejercicioService.list(false);
+		
+		for (Ejercicio item: ejercicios) {
+						
+			LOGGER.info(item);	
+			
+			List<DetalleCategoria> detalles = item.getDetallesCategorias();
+		
+			for (DetalleCategoria itemDetalle: detalles) {
+				
+				LOGGER.info("     {} ", itemDetalle.getCategoria());
+			}
 		}	
 	}
 	

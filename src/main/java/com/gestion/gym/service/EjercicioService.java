@@ -12,7 +12,7 @@ public interface EjercicioService {
 	
 	void delete(Integer id);
 	
-	List<Ejercicio> list();
+	List<Ejercicio> list(boolean fetch);
 	
 	List<Ejercicio> listByCategoria(String categoria);
 	

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gestion.gym.modelo.Categoria;
+import com.gestion.gym.modelo.DetalleCategoria;
 import com.gestion.gym.service.CategoriaService;
 
 @Component
@@ -63,7 +64,8 @@ public class AdminCategoria {
 	public void listar () {
 		
 	    	
-		List<Categoria> categorias = categoriaService.list();
+		List<Categoria> categorias = categoriaService.list(true);
+		
 		for (Categoria item: categorias) {
 						
 			LOGGER.info(item);	
@@ -82,6 +84,28 @@ public class AdminCategoria {
 			LOGGER.info(item);	
 		}	
 	}
+	
+	public void listarAndEjercicio() {
+		
+    List<Categoria> categorias = categoriaService.list(false);
+		
+		for (Categoria item: categorias) {
+						
+			LOGGER.info(item);
+			
+			List<DetalleCategoria> detalles = item.getDetallesCategorias();
+			
+			for (DetalleCategoria itemDetalle: detalles) {
+				
+				LOGGER.info("    {}", itemDetalle.getEjercicio());
+				
+			}
+			
+		}	
+		
+		
+	}
+	
 	
 	
 }

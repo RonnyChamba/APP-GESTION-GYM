@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gestion.gym.modelo.DetalleCategoria;
 import com.gestion.gym.modelo.Ejercicio;
 import com.gestion.gym.repository.EjercicioRepository;
 
@@ -40,9 +41,38 @@ public class EjercicioServiceImpl implements EjercicioService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<Ejercicio> list() {
+	public List<Ejercicio> list(boolean fetch) {
 		
-		return  ejercicioRepository.findAll();
+		List<Ejercicio> ejercicios = ejercicioRepository.findAll();
+		
+		if (fetch) {
+			return ejercicios;
+		}
+		
+	
+		/**
+		 * Invocacion de metodos para resoover la Lazy  de las relaciones
+		 */
+		for (Ejercicio item : ejercicios) {
+			
+			  List<DetalleCategoria>  detalles  = item.getDetallesCategorias();
+			  
+			  detalles.size();
+			  
+			  
+			  for(DetalleCategoria itemDetalle: detalles) {
+				  
+				  itemDetalle.getCategoria().toString();
+				  
+			  }
+			
+			
+			
+			
+		}
+		
+		return  ejercicios;
+		
 	}
 
 	@Transactional(readOnly = true)

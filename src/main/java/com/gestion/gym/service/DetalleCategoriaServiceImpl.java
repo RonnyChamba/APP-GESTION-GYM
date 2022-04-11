@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.gestion.gym.modelo.Categoria;
 import com.gestion.gym.modelo.DetalleCategoria;
 import com.gestion.gym.modelo.DetalleCategoriaPK;
 import com.gestion.gym.repository.DetalleCategoriaRepository;
@@ -48,7 +46,17 @@ public class DetalleCategoriaServiceImpl implements DetalleCategoriaService {
 	@Override
 	public List<DetalleCategoria> list() {
 		
-		return  detalleRepository.findAll();
+		List<DetalleCategoria> detalles = detalleRepository.findAll();
+		
+	
+		for (DetalleCategoria item : detalles) {
+			
+			item.getCategoria().toString();
+			item.getEjercicio().toString();
+		}
+		
+		
+		return  detalles;
 	}
 
 	@Transactional(readOnly = true)

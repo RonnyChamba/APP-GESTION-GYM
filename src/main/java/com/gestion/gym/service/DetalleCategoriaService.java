@@ -2,8 +2,6 @@ package com.gestion.gym.service;
 
 import java.util.List;
 import java.util.Optional;
-
-import com.gestion.gym.modelo.Categoria;
 import com.gestion.gym.modelo.DetalleCategoria;
 import com.gestion.gym.modelo.DetalleCategoriaPK;
 

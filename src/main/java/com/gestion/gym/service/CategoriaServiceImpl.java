@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gestion.gym.modelo.Categoria;
+import com.gestion.gym.modelo.DetalleCategoria;
 import com.gestion.gym.repository.CategoriaRepository;
 
 @Service
@@ -44,10 +45,31 @@ public class CategoriaServiceImpl  implements CategoriaService{
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Categoria> list() {
+	public List<Categoria> list(boolean fetch) {
+		
+		List<Categoria> categorias = categoriaRepository.findAll();
+		
+		if (fetch)  return categorias;
+		
+		/**
+		 * Ejecucion para resolver Lazys
+		 */
+
+		for (Categoria item: categorias) {
+			
+			List<DetalleCategoria> detalles = item.getDetallesCategorias();
+			
+			detalles.size();
+			
+			for (DetalleCategoria itemDetalle: detalles) {
+				
+				itemDetalle.getEjercicio().toString();
+			}
+		}
 		
 		
-		return categoriaRepository.findAll();
+		
+		return categorias;
 	}
 
 	@Transactional(readOnly = true)

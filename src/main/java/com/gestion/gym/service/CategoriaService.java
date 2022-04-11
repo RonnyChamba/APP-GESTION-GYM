@@ -13,7 +13,7 @@ public interface CategoriaService {
 	
 	void delete(Integer id);
 	
-	List<Categoria> list();
+	List<Categoria> list(boolean fetch);
 	
 	List<Categoria> listByEjercicio(String ejercicio);
 	

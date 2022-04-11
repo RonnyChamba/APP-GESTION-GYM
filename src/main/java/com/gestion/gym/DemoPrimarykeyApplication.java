@@ -1,6 +1,4 @@
 package com.gestion.gym;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -52,9 +50,11 @@ public class DemoPrimarykeyApplication implements CommandLineRunner {
 
 		// adminEjercicio.delete(8);
 
-		// adminEjercicio.listar();
+		//adminEjercicio.listar();
 
-		adminEjercicio.listarPorCategoria("BICEPS");
+		//adminEjercicio.listarPorCategoria("BICEPS");
+		
+		adminEjercicio.listarAndCategoria();
 	}
 	
 	public void crudCategoria() {
@@ -65,9 +65,10 @@ public class DemoPrimarykeyApplication implements CommandLineRunner {
 		
 		//adminCategoria.delete(6);
 		
-		//adminCategoria.listar();
+		// adminCategoria.listar();
 		
-		adminCategoria.listarPorEjercicio("ESTIRADAS");
+		//adminCategoria.listarPorEjercicio("ESTIRADAS");
+		adminCategoria.listarAndEjercicio();
 	}
 	
 	public void crudDetalle() {
